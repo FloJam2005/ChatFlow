@@ -1,0 +1,7 @@
+asgiref==3.7.2
+django==4.2.3
+django-crispy-forms==2.0.0
+crispy-bootstrap5==0.7.0
+pillow==10.0.0
+sqlparse==0.4.4
+fontawesomefree==6.4.0
