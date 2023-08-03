@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+    <div>
+
+        <h1>{{ profile.user.username}}</h1>
+        <p>Follows: {{ profile.followCount }}</p>
+
+       <a href="{{ profile.image.url }}"> <img src="{{ profile.image.url }}", style="width: 100px; height: 100px; object-fit: cover; border-radius:50%;"></a>
+    <a href="{% url "user-follow" profile.user.username%}" class="btn btn-secondary">Follow</a>
+        <p>Beigetreten: {{ profile.joinedAt }}</p>
+        <div style="border: 1px solid black" padding="3px" text-align="center", margin-bottom="5px">
+
+            <p> {{ profile.bio}} </p>
+        </div>
+
+        {% if profile.user == user %}
+            <a  class="btn btn-secondary" href="{% url "user-update" profile.id %}"> edit</a>
+        {% endif %}
+
+        <h2>Follower</h2>
+        {% for follow in profile.allFollows  %}
+            <a href="{%   url "user-profile-page" follow.username %}">
+            <img src="{{ follow.profile.image.url }}" style="width: 50px; height: 50px; object-fit: cover; border-radius:50%;">
+
+            <p>{{ follow.username }}</p>
+            </a>
+
+        {% endfor %}
+
+    </div>
+{% endblock %}
+
+

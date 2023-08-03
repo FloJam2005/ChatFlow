@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+{% load crispy_forms_filters %}
+
+{% block content %}
+    <div class="login-box">
+        <form method="POST">
+            {% csrf_token %}
+            <div class="user-box">
+                <fieldset class="form-group">
+                    <legend class="border-bottom mb-4">Log In</legend>
+                    {{ form|crispy }}
+                </fieldset>
+            </div>
+            <div class="form-group">
+                <button class="btn btn-outline-info" type="submit">
+                    <span></span>
+                  <span></span>
+                  <span></span>Login</button>
+            </div>
+        </form>
+        <div class="border-top pt-3">
+            <p>
+                Wanna join? <a class="ml-2" href="{% url 'register' %}">Sign Up Now</a>
+            </p>
+        </div>
+
+
+
+
+
+
+        <!--   Die Template login Page
+        <div class="login-box">
+            <h2>Login</h2>
+            <form>
+                <div class="user-box">
+                  <input type="text" name="" required="">
+                  <label>Username</label>
+                </div>
+                <div class="user-box">
+                  <input type="password" name="" required="">
+                  <label>Password</label>
+                </div>
+                <a href="#">
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                  Submit
+                </a>
+          </form>
+        </div>
+    </div>
+-->
+
+
+
+{% endblock content %}
+

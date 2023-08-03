@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block content %}
+    {% include "blog/post.html" with post=post %}
+
+    {% for comment in comments %}
+        {% include "blog/comment.html" with comment=comment %}
+    {% endfor %}
+    {% include "pageination.html" %}
+{% endblock content %}

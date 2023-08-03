@@ -1,0 +1,57 @@
+<div class="jumbotron mt-3 shadow-lg">
+
+    <article class="media content-section shadow ">
+
+        <div class="media-body">
+
+            <div class="">
+                <div class="d-flex justify-content-between">
+                    <a class="mr-2 mt-0 mb-0  text-dark" href="{% url 'user-posts' post.author.username %}">
+                        <img src="{{ post.author.profile.image.url}}", style="width: 50px; height: 50px; object-fit: cover; border-radius:50%;">
+                        <h3>{{ post.author }}</h3>
+                    </a>
+                </div>
+                <div>
+                    <small class="text-muted" style="color: white !important;">{{ post.date_posted }}</small>
+                </div>
+                <hr>
+            <h2><a id="{{ post.id }}">{{ post.title }}</a></h2>
+
+            {% if post.image.url != "/media/default.jpg"%}
+                <a href="{{ post.image.url }}"> <img src="{{ post.image.url }}" style="max-width:400px;width:100%" ></a>
+            {% endif %}
+
+
+            </div>
+
+
+            <p class="article-content">{{ post.content }}</p>
+            <br>
+            <br>
+            <br>
+
+
+            <p style="color: #fff">Likes: {{post.countLikes }}</p>
+
+            <p style="color: #fff" >Dislikes: {{post.countDislikes}}</p>
+
+
+        </div>
+         {% if post.author == user %}
+                    <div>
+                        <a class="btn btn-secondary btn-sm mt-1 mb-1"
+                           href="{% url 'post-update' post.id %}">Update</a>
+                        <a class="btn btn-danger btn-sm mt-1 mb-1"
+                           href="{% url 'post-delete' post.id %}">Delete</a>
+                    </div>
+            {% endif %}
+            <a class="btn btn-secondary btn-sm mt-1 mb-1"
+                           href="{% url 'post-comment' post.id %}">Comment</a>
+
+            <a class="btn btn-secondary btn-sm mt-1 mb-1" href="{% url "comments" post.id %}">show</a>
+            <a class="btn btn-secondary btn-sm mt-1 mb-1" href="{% url "likePost" post.id %}"><img src="https://localhost:8080/media/like.jpg" width="10px", height="10px" alt="like"></a>
+    <a class="btn btn-secondary btn-sm mt-1 mb-1" href="{% url "dislikePost" post.id %}" >Dislike</a>
+
+    </article>
+
+</div>

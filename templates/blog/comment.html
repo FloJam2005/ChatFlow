@@ -1,0 +1,30 @@
+<div class="jumbotron mt-3 shadow-lg">
+    <article class="media content-section shadow ">
+        <div class="media-body">
+            <div class="">
+                <div class="d-flex justify-content-between">
+                    <!--<a class="mr-2 mt-0 mb-0  text-dark" href="{'% url 'user-posts' comment.author.username %}"> -->
+                        <img src="{{ comment.author.profile.image.url}}", style="width: 50px; height: 50px; object-fit: cover; border-radius:50%;">
+                        <h3>{{ comment.author }}</h3>
+                    </a>
+                </div>
+
+                <hr>
+
+
+
+
+            </div>
+
+            <p class="article-content">{{ comment.content }}</p>
+
+            {% if comment.author == user or comment.post.author == user%}
+                <a class="btn btn-danger btn-sm mt-1 mb-1"
+                           href="{% url 'comment-delete' comment.id %}">Delete</a>
+
+            {% endif %}
+
+
+        </div>
+    </article>
+</div>

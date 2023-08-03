@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block content %}
+    {{ username }}
+    {% if user.is_authenticated and user.username == view.kwargs.username %}
+        <ul class="nav nav-tabs justify-content-left">
+            <li class="nav-item">
+                <a class="nav-link {% if request.resolver_match.url_name == 'user-posts' %}active{% endif %}"
+                   aria-current="page"
+                   href="{% url 'user-posts' user.username %}">
+                    My Posts
+                </a>
+            </li>
+        </ul>
+    {% endif %}
+    {% if user.username == view.kwargs.username %}
+        <h1 class="mb-3">My posts</h1>
+
+    {% else %}
+        <h1 class="mb-3">Posts by {{ view.kwargs.username }} ({{ page_obj.paginator.count }})</h1>
+    {% endif %}
+    <a class="btn btn-secondary"href="{% url "user-profile-page" view.kwargs.username %}">view profile</a>
+    {% for post in posts %}
+        {% include "blog/post.html" with post=post %}
+    {% endfor %}
+
+    {% include "pageination.html" %}
+{% endblock content %}

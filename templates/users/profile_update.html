@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block content %}
+<div>
+    <form method="post" enctype="multipart/form-data">
+    {% csrf_token %} <!-- Security-Feature -->
+        <!-- Form enthält durch form.as_p automatisch alle Felder,
+             wie in der View definiert -->
+        {{ form.as_p }}
+        <input type="submit" value="Update">
+    </form>
+</div>
+{% endblock content %}
